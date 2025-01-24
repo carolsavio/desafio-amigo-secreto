@@ -17,4 +17,38 @@ function limpaCampo(){
     nomeAmigo.value = "";
 }
 
+//função para criar listas
+
+function criandoLista() {
+    let lista = document.querySelector('.name-list');
+    lista.innerHTML = '';
+    for(i = 0; i <amigos.length; i++){
+        let novoAmigo = document.createElement('li');
+        novoAmigo.textContent = amigos[i];
+        lista.appendChild(novoAmigo);
+        
+    }
+}
+
+// função para sortear um novo amigo aleatório
+function sortearAmigo() {
+    if(amigos.length == 0){
+        alert('Adicione amigos para participar!');
+    } else {
+        let amigoAleatorio = Math.floor(Math.random() * amigos.length);
+        let resultadoAmigo = document.getElementById('resultado');
+        resultadoAmigo.innerHTML = `Seu amigo secreto é ${amigoAleatorio}`;
+
+        
+    }
+    recomecar();
+}
+
+//função para recomeçar a lista
+function recomecar(){
+    amigos = [];
+    nomeAmigo.value = '';
+    lista.innerHTML = '';
+
+}
     
