@@ -1,4 +1,5 @@
 let amigos = [];
+// let lista = [];
 
 //Adicionando amigos a lista e verificando se o campo está vazio
 function adicionarAmigo(){
@@ -8,6 +9,7 @@ function adicionarAmigo(){
     } else {
         amigos.push(nomeAmigo);
     }
+    criandoLista()
     console.log(amigos);
     limpaCampo();
 }
@@ -20,7 +22,7 @@ function limpaCampo(){
 //função para criar listas
 
 function criandoLista() {
-    let lista = document.querySelector('.name-list');
+    let lista = document.getElementById('listaAmigos');
     lista.innerHTML = '';
     for(i = 0; i <amigos.length; i++){
         let novoAmigo = document.createElement('li');
@@ -37,8 +39,8 @@ function sortearAmigo() {
     } else {
         let amigoAleatorio = Math.floor(Math.random() * amigos.length);
         let resultadoAmigo = document.getElementById('resultado');
-        resultadoAmigo.innerHTML = `Seu amigo secreto é ${amigoAleatorio}`;
-
+        resultadoAmigo.innerHTML = `Seu amigo secreto é ${amigos[amigoAleatorio]}`;
+        
         
     }
     recomecar();
@@ -47,8 +49,10 @@ function sortearAmigo() {
 //função para recomeçar a lista
 function recomecar(){
     amigos = [];
-    nomeAmigo.value = '';
-    lista.innerHTML = '';
+    document.getElementById('amigo').value = '';
+    // lista.innerHTML = '';
+    // lista.value = '';
+    resultadoAmigo = '';
 
 }
     
