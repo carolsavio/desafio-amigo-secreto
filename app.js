@@ -1,18 +1,22 @@
 let amigos = [];
-// let lista = [];
 
-//Adicionando amigos a lista e verificando se o campo está vazio
+
+//Adicionando amigos a lista e verificando se o campo está vazio ou nome ja existe
 function adicionarAmigo(){
     let nomeAmigo = document.getElementById('amigo').value;
+
     if (nomeAmigo == "") {
         alert('Por favor, insira um nome abaixo!'); 
-    } else {
+    } else if(amigos.includes(nomeAmigo)) {
+        alert('Amigo com mesmo nome já adicionado!')
+    }else {
         amigos.push(nomeAmigo);
     }
-    criandoLista()
+    criandoLista();
     console.log(amigos);
     limpaCampo();
 }
+
 // função para limpar o campo de input
 function limpaCampo(){
     let nomeAmigo = document.getElementById('amigo');
@@ -20,7 +24,6 @@ function limpaCampo(){
 }
 
 //função para criar listas
-
 function criandoLista() {
     let lista = document.getElementById('listaAmigos');
     lista.innerHTML = '';
@@ -39,9 +42,7 @@ function sortearAmigo() {
     } else {
         let amigoAleatorio = Math.floor(Math.random() * amigos.length);
         let resultadoAmigo = document.getElementById('resultado');
-        resultadoAmigo.innerHTML = `Seu amigo secreto é ${amigos[amigoAleatorio]}`;
-        
-        
+        resultadoAmigo.innerHTML = `Seu amigo secreto é ${amigos[amigoAleatorio]}`;    
     }
     recomecar();
 }
@@ -50,9 +51,14 @@ function sortearAmigo() {
 function recomecar(){
     amigos = [];
     document.getElementById('amigo').value = '';
-    // lista.innerHTML = '';
-    // lista.value = '';
-    resultadoAmigo = '';
+
 
 }
+//Adicionando funcionalidade a tecla Enter
+document.addEventListener('keydown', function(event){
+    let key = event.key;
+    if(key === 'Enter') {
+        adicionarAmigo();
+    }
+})
     
